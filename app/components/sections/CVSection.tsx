@@ -7,10 +7,7 @@ import SpotlightCard from "@/app/components/SpotlightCard/SpotlightCard";
 import GradientText from "@/app/components/GradientText/GradientText";
 import Magnet from "@/app/components/Magnet/Magnet";
 
-const ScrollVelocity = dynamic(
-    () => import("@/app/components/ScrollVelocity/ScrollVelocity"),
-    { ssr: false }
-    );
+const ScrollVelocity = dynamic(() => import("@/app/components/ScrollVelocity/ScrollVelocity").then(m => m.default), { ssr: false });
 
     const CV_LINK =
     "https://drive.google.com/file/d/123vUTdVxQ9LwOFwezuILq5FezI2nUvFR/view";

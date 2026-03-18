@@ -7,9 +7,7 @@
 import dynamic from "next/dynamic";
 import { NAV_ITEMS } from "@/app/constants/nav";
 
-const GooeyNav = dynamic(() => import("@/app/components/GooeyNav/GooeyNav"), {
-    ssr: false,
-    });
+const GooeyNav = dynamic(() => import("@/app/components/GooeyNav/GooeyNav").then(m => m.default), { ssr: false });
 
     export function Header() {
     return (

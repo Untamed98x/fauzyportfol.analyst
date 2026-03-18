@@ -5,9 +5,8 @@
 
 import dynamic from "next/dynamic";
 
-const Dither = dynamic(() => import("@/app/components/Dither/Dither"), {
-    ssr: false,
-    });
+
+const Dither = dynamic(() => import("@/app/components/Dither/Dither").then(m => m.default), { ssr: false });
 
     export function DitherBackground() {
     return (

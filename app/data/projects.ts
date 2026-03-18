@@ -1,9 +1,20 @@
-export const PROJECTS: Project[] = [
+// app/data/projects.ts
+export interface Project {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    link: string;
+    tags?: string[];
+    featured?: boolean;
+    }
+
+    export const PROJECTS: Project[] = [
     {
         id: 1,
         title: "Portfolio App",
         description: "A Next.js + Tailwind project",
-        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",
+        image: "/images/project1.png",
         link: "https://github.com/yourusername/project1",
         tags: ["Next.js", "Tailwind"],
         featured: true,
@@ -12,7 +23,7 @@ export const PROJECTS: Project[] = [
         id: 2,
         title: "Data Dashboard",
         description: "Analytics with charts",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+        image: "/images/project2.png",
         link: "https://github.com/yourusername/project2",
         tags: ["Python", "Charts"],
     },
@@ -20,7 +31,7 @@ export const PROJECTS: Project[] = [
         id: 3,
         title: "Landing Page",
         description: "Responsive design project",
-        image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop",
+        image: "/images/project3.png",
         link: "https://yourportfolio.com/landing",
         tags: ["HTML", "CSS"],
     },

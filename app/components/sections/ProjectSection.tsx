@@ -17,14 +17,9 @@ import { PROJECTS } from "@/app/data/projects";
 import { TIMELINE_DATA } from "@/app/data/timeline";
 import { TimelineContent } from "./TimelineContent";
 
-const ScrollVelocity = dynamic(
-    () => import("@/app/components/ScrollVelocity/ScrollVelocity"),
-    { ssr: false }
-    );
-    const Timeline = dynamic(
-    () => import("@/app/components/Timeline/Timeline"),
-    { ssr: false }
-    );
+const ScrollVelocity = dynamic(() => import("@/app/components/ScrollVelocity/ScrollVelocity").then(m => m.default), { ssr: false });
+const Timeline = dynamic(() => import("@/app/components/Timeline/Timeline").then(m => m.Timeline), { ssr: false });
+
 
     // Build timeline data untuk Timeline component dari plain data
     // JSX di-generate di sini, bukan di data file

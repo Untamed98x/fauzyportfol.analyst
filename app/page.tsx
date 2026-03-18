@@ -4,8 +4,8 @@
 
 "use client";
 
-import { DitherBackground } from "./components/layout/DitherBackground";
-import { Header } from "./components/layout/Header";
+import { DitherBackground } from "./components/Layouts/DitherBackground";
+import { Header } from "./components/Layouts/Header";
 import { HeroSection } from "./components/sections/HeroSection";
 import { ProjectSection } from "./components/sections/ProjectSection";
 import { CVSection } from "./components/sections/CVSection";

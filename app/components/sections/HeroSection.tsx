@@ -11,10 +11,17 @@ import RotatingText from "@/app/components/RotatingText/RotatingText";
 import SplitText from "@/app/components/SplitText/SplitText";
 import BlurText from "@/app/components/BlurText/BlurText";
 
-const Lanyard = dynamic(() => import("@/app/components/Lanyard/Lanyard"), {
-    ssr: false,
-    loading: () => <div className="h-[500px]" />, // placeholder biar layout gak loncat
-    });
+const Lanyard = dynamic(
+    () => import("@/app/components/Lanyard/Lanyard"),
+    {
+        ssr: false,
+        loading: () => (
+        <div className="h-[500px] flex items-center justify-center">
+            <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+        </div>
+        )
+    }
+);
 
     const ROTATING_TEXTS = [
     "A Data Gardener",
