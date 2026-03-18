@@ -11,15 +11,11 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
-    "@lottiefiles/react-lottie-player": "^3.6.0",
-    "@react-pdf-viewer/core": "^3.12.0",
-    "@react-pdf-viewer/default-layout": "^3.12.0",
     "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "@react-three/postprocessing": "^2.19.1",
     "@react-three/rapier": "^1.5.0",
-    "@tabler/icons-react": "^3.33.0",
     "@tailwindcss/typography": "^0.5.16",
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.2",
@@ -31,13 +27,9 @@
     "postprocessing": "^6.37.3",
     "react": "^18",
     "react-dom": "^18",
-    "react-helmet": "^6.1.0",
-    "react-pdf": "^9.2.1",
     "swiper": "^11.2.10",
     "tailwind-merge": "^3.3.0",
-    "three": "^0.167.1",
-    "tiny-slider": "^2.9.4",
-    "tiny-slider-react": "^0.5.7"
+    "three": "^0.167.1"
   },
   "devDependencies": {
     "@types/node": "^20",
