@@ -3,9 +3,9 @@
 // Kalau mau tambahin halaman baru, cukup edit file ini aja
 
 export const NAV_ITEMS = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "#CV" },
-  { label: "Projects", href: "#project" },
-] as const;
+    { label: "Home", href: "/" },
+    { label: "About", href: "#CV" },
+    { label: "Projects", href: "#project" },
+];
 
 export type NavItem = (typeof NAV_ITEMS)[number];
