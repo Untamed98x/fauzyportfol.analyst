@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Variabel warna untuk light/dark mode */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,14 +17,93 @@
   }
 }
 
+/* Body styling dasar */
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* Custom utilities responsive untuk text balancing, ukuran font, padding, dan grid */
 @layer utilities {
+  /* text-wrap balance */
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Responsive font size */
+  .responsive-text {
+    font-size: 1rem; /* default */
+
+    @screen sm {
+      font-size: 1.25rem;
+    }
+    @screen md {
+      font-size: 1.5rem;
+    }
+    @screen lg {
+      font-size: 2rem;
+    }
+  }
+
+  /* Responsive padding */
+  .responsive-padding {
+    padding: 0.5rem;
+
+    @screen sm {
+      padding: 0.75rem;
+    }
+    @screen md {
+      padding: 1rem;
+    }
+    @screen lg {
+      padding: 1.5rem;
+    }
+  }
+
+  /* Responsive grid container */
+  .responsive-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* default single column */
+
+    @screen md {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+
+  /* Responsive column spans */
+  .responsive-col-6 {
+    grid-column: span 12; /* full width mobile */
+
+    @screen md {
+      grid-column: span 6; /* half width tablet+ */
+    }
+  }
+  .tiny-slider {
+    width: 100%;
+    max-width: 100%;
+  }
+/* styles/globals.css atau langsung di komponen */
+.gooey {
+  filter: url("#goo");
 }
+
+svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.title {
+  color: white;
+}
+.description {
+  color: white;
+}
+.lanyard {
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
+
+
+}
+
