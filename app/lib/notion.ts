@@ -1,6 +1,6 @@
 // app/lib/notion.ts
 
-export interface NotionProject {
+    export interface NotionProject {
     id: string;
     title: string;
     link: string;
@@ -23,7 +23,7 @@ export interface NotionProject {
             property: "Tags",
             multi_select: { contains: "#Finished" },
             },
-            sorts: [{ property: "userDefined:ID", direction: "descending" }],
+            // sort dihapus — userDefined:ID tidak support di Notion external API
         }),
         next: { revalidate: 3600 }, // cache 1 jam, auto revalidate
         }
