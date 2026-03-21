@@ -1,7 +1,4 @@
 // app/components/sections/ProjectSection.tsx
-// Swiper + timeline di sini, bukan di page.tsx
-// Data project di-import dari data/projects.ts
-
 "use client";
 
 import dynamic from "next/dynamic";
@@ -13,16 +10,19 @@ import "swiper/css/pagination";
 
 import SpotlightCard from "@/app/components/SpotlightCard/SpotlightCard";
 import GradientText from "@/app/components/GradientText/GradientText";
-import { PROJECTS } from "@/app/data/projects";
 import { TIMELINE_DATA } from "@/app/data/timeline";
 import { TimelineContent } from "./TimelineContent";
+import type { NotionProject } from "@/app/lib/notion";
 
-const ScrollVelocity = dynamic(() => import("@/app/components/ScrollVelocity/ScrollVelocity").then(m => m.default), { ssr: false });
-const Timeline = dynamic(() => import("@/app/components/Timeline/Timeline").then(m => m.Timeline), { ssr: false });
+const ScrollVelocity = dynamic(
+    () => import("@/app/components/ScrollVelocity/ScrollVelocity"),
+    { ssr: false }
+    );
+    const Timeline = dynamic(
+    () => import("@/app/components/Timeline/Timeline").then((m) => m.Timeline),
+    { ssr: false }
+    );
 
-
-    // Build timeline data untuk Timeline component dari plain data
-    // JSX di-generate di sini, bukan di data file
     const timelineData = TIMELINE_DATA.map((entry) => ({
     title: entry.year,
     content: <TimelineContent entry={entry} />,
@@ -31,7 +31,12 @@ const Timeline = dynamic(() => import("@/app/components/Timeline/Timeline").then
     const CV_LINK =
     "https://drive.google.com/file/d/123vUTdVxQ9LwOFwezuILq5FezI2nUvFR/view";
 
-    export function ProjectSection() {
+    // ✅ Terima projects sebagai props dari server component
+    interface ProjectSectionProps {
+    projects: NotionProject[];
+    }
+
+    export function ProjectSection({ projects }: ProjectSectionProps) {
     return (
         <section className="relative w-full mt-16">
         <ScrollVelocity
@@ -59,51 +64,52 @@ const Timeline = dynamic(() => import("@/app/components/Timeline/Timeline").then
 
             {/* Swiper carousel */}
             <div className="mt-8">
-            <Swiper
+            {projects.length === 0 ? (
+                <p className="text-white/50 text-center py-12">
+                No projects found. Add some in Notion!
+                </p>
+            ) : (
+                <Swiper
                 modules={[Navigation, Pagination]}
                 navigation
                 pagination={{ clickable: true }}
                 spaceBetween={30}
                 slidesPerView={1}
-            >
-                {PROJECTS.map((project) => (
-                <SwiperSlide key={project.id}>
-                    <div className="flex flex-col items-center">
-                    <a
+                >
+                {projects.map((project) => (
+                    <SwiperSlide key={project.id}>
+                    <div className="flex flex-col items-center pb-10">
+                        <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                    >
+                        >
                         <img
-                        src={project.image}
-                        alt={project.title}
-                        loading="lazy"
-                        decoding="async"
-                        className="rounded-lg shadow-lg w-full h-auto"
+                            src={project.image}
+                            alt={project.title}
+                            loading="lazy"
+                            decoding="async"
+                            className="rounded-lg shadow-lg w-full h-auto max-h-96 object-cover"
                         />
-                    </a>
-                    <h3 className="text-lg font-bold mt-4">{project.title}</h3>
-                    {/* description sekarang dipake */}
-                    <p className="text-sm text-white/70 mt-1">
-                        {project.description}
-                    </p>
-                    {/* tags kalau ada */}
-                    {project.tags && (
-                        <div className="flex gap-2 mt-2">
-                        {project.tags.map((tag) => (
+                        </a>
+                        <h3 className="text-lg font-bold mt-4">{project.title}</h3>
+                        {project.tags.length > 0 && (
+                        <div className="flex gap-2 mt-2 flex-wrap justify-center">
+                            {project.tags.map((tag) => (
                             <span
-                            key={tag}
-                            className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/80"
+                                key={tag}
+                                className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/80"
                             >
-                            {tag}
+                                {tag}
                             </span>
-                        ))}
+                            ))}
                         </div>
-                    )}
+                        )}
                     </div>
-                </SwiperSlide>
+                    </SwiperSlide>
                 ))}
-            </Swiper>
+                </Swiper>
+            )}
             </div>
         </div>
 
@@ -111,4 +117,4 @@ const Timeline = dynamic(() => import("@/app/components/Timeline/Timeline").then
         <Timeline data={timelineData} />
         </section>
     );
-}
+    }

@@ -2,12 +2,12 @@
 // Versi bersih setelah refactor
 // page.tsx cuma jadi orchestrator — gak ada data, gak ada logic
 
-"use client";
+// "use client";
 
 import { DitherBackground } from "./components/Layouts/DitherBackground";
 import { Header } from "./components/Layouts/Header";
 import { HeroSection } from "./components/sections/HeroSection";
-import { ProjectSection } from "./components/sections/ProjectSection";
+import ProjectSectionWrapper from "./components/sections/ProjectSectionWrapper";
 import { CVSection } from "./components/sections/CVSection";
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
 
       <div className="container mx-auto px-4 py-12 min-h-screen">
         <HeroSection />
-        <ProjectSection />
+        <ProjectSectionWrapper />
         <CVSection />
       </div>
     </div>
